@@ -211,8 +211,8 @@ int main()
 		switch (ActType)
 		{
 		case DRAW_RECT:
-				pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
-				break;
+			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
+			break;
 
 		case DRAW_CIRC:
 			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
@@ -221,36 +221,80 @@ int main()
 		case DRAW_SQUA:
 			pOut->PrintMessage("Action: Draw a Square , Click anywhere");
 			break;
+		case DRAW_HEXA:
+			pOut->PrintMessage("Action: Draw a Hexagon , Click anywhere");
+			break;
+		case DRAW_TRIA:
+			pOut->PrintMessage("Action: Draw a triangle , Click anywhere");
+			break;
+		case FUNC_LOAD:
+			pOut->PrintMessage("Action: Draw a load drawing , Click anywhere");
+			break;
+		case FUNC_PLAY_REC:
+			pOut->PrintMessage("Action: Draw a play recording , Click anywhere");
+			break;
+		case FUNC_SAVE:
+			pOut->PrintMessage("Action: Draw a save recording , Click anywhere");
+			break;
+		case FUNC_REDO:
+			pOut->PrintMessage("Action: redo , Click anywhere");
+			break;
+		case FUNC_SELECT:
+			pOut->PrintMessage("Action: select a drawing , Click anywhere");
+			break;
+		case FUNC_START_REC:
+			pOut->PrintMessage("Action:start recording, Click anywhere");
+			break;
+		case FUNC_STOP_REC:
+			pOut->PrintMessage("Action:stop recording , Click anywhere");
+			break;
+		case FUNC_ADD_IMAGE:
+			pOut->PrintMessage("Action:add image , Click anywhere");
+			break;
+		case COLOR_ORANGE:
+			pOut->PrintMessage("Action:orange color, Click anywhere");
+			break;
+		case COLOR_BLACK:
+			pOut->PrintMessage("Action:black color, Click anywhere");
+			break;
+		case COLOR_BLUE:
+			pOut->PrintMessage("Action:blue color , Click anywhere");
+			break;
+		case COLOR_GREEN:
+			pOut->PrintMessage("Action:green color, Click anywhere");
+			break;
+		case COLOR_RED:
+			pOut->PrintMessage("Action:red color, Click anywhere");
+			break;
+		case COLOR_YELLOW:
+			pOut->PrintMessage("Action:yellow color , Click anywhere");
+			break;
 		case STATUS:
-				pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
-				break;
- 
+			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
+			break;
+
 		case DRAWING_AREA:
-				pOut->PrintMessage("Action: a click on the Drawing Area, Click anywhere");
-				break;
+			pOut->PrintMessage("Action: a click on the Drawing Area, Click anywhere");
+			break;
 
 		case EMPTY:
-				pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
-				break;
+			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
+			break;
 
-		case TO_DRAW:
-				pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-				pOut->CreateDrawToolBar();
-				break;
-
-		case TO_PLAY:
-				pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
-				pOut->CreatePlayToolBar();
-				break;
+		case ENTER_PLAY_MODE:
+			pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
+			pOut->CreatePlayToolBar();
+			break;
 
 
-		///TODO: Add more cases for the other action types
+			///TODO: Add more cases for the other action types
 
 
-		case EXIT:				
-				break;
+		case FUNC_EXIT:
+			break;
 		}
-	}while(ActType != EXIT);
+	} while (ActType != FUNC_EXIT);
+
 
 
 	/// Exiting
