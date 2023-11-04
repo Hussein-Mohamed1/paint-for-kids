@@ -130,38 +130,34 @@ int main()
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
 	pIn->GetPointClicked(P3.x, P3.y);
-	int xcoordinates[3] = { P1.x ,P2.x ,P3.x };
-	int ycoordinates[3] = { P1.y ,P2.y ,P3.y };
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
 	gfxInfo.isFilled = false;	//Figure is NOT filled
-	pOut->Drawrtriangle(xcoordinates, ycoordinates, gfxInfo, false);
+	pOut->Drawrtriangle(P1.x,P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, false);
 
 	// 2.3.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a triangle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->Drawrtriangle(xcoordinates, ycoordinates, gfxInfo, true);
+	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, true);
 
 	// 2.3.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a triangle ==> filled,  Click three points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
 	pIn->GetPointClicked(P3.x, P3.y);
-	int x1coordinates[3] = { P1.x ,P2.x ,P3.x };
-	int y1coordinates[3] = { P1.y ,P2.y ,P3.y };
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
 	gfxInfo.FillClr = GREEN;//any color for filling
 	gfxInfo.isFilled = true;//Figure is filled
-	pOut->Drawrtriangle(x1coordinates, y1coordinates, gfxInfo, false);
+	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, false);
 
 
 	// 2.3.4 - Drawing highlighted filled tritangle
 	pOut->PrintMessage("Drawing a triangle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->Drawrtriangle(x1coordinates, y1coordinates, gfxInfo, true);
+	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, true);
 
 
 

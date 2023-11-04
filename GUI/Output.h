@@ -21,7 +21,7 @@ public:
 	// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected=false) const;
 	///Make similar functions for drawing all other figure types.//Draw a rectangle
-	void Drawrtriangle(const int* xcoordinates, const int* ycoordinates, GfxInfo RectGfxInfo, bool selected) const;
+	void Output::Drawrtriangle(int x1, int y1, int x2, int y2, int x3, int y3, GfxInfo RectGfxInfo, bool selected) const;
 	void Output::DrawCirc(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const;
 	void Drawhexagon(const int* xcoordinates, const int* ycoordinates, GfxInfo RectGfxInfo, bool selected) const;
 

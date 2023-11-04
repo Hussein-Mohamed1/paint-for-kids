@@ -207,7 +207,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 	pWind->DrawCircle(P1.x, P1.y, sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y)), style);
 }
-void Output::Drawrtriangle(const int* xcoordinates, const int* ycoordinates, GfxInfo RectGfxInfo, bool selected) const
+void Output::Drawrtriangle( int x1 , int y1, int x2, int y2, int x3, int y3, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
@@ -226,7 +226,7 @@ void Output::Drawrtriangle(const int* xcoordinates, const int* ycoordinates, Gfx
 		style = FRAME;
 
 
-	pWind->DrawPolygon(xcoordinates, ycoordinates, 3, style);
+	pWind->DrawTriangle(x1,y1,x2,y2,x3,y3, style);
 
 
 
