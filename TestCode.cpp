@@ -36,7 +36,7 @@ int main()
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
-	Point P1, P2;
+	Point P1, P2 , P3;
 
 	/// 2.1- Rectangle Test ///
 	/// =================== 
@@ -125,7 +125,47 @@ int main()
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Triangle in all possible states
+	// 2.3.1 - Drawing non-filled triangle
+	pOut->PrintMessage("Drawing a triangle ==> non-filled,  Click three points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+	int xcoordinates[3] = { P1.x ,P2.x ,P3.x };
+	int ycoordinates[3] = { P1.y ,P2.y ,P3.y };
+
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->Drawrtriangle(xcoordinates, ycoordinates, gfxInfo, false);
+
+	// 2.3.2 - Drawing highlighted non-filled rectangle
+	pOut->PrintMessage("Drawing a triangle ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawrtriangle(xcoordinates, ycoordinates, gfxInfo, true);
+
+	// 2.3.3 - Drawing a filled rectangle
+	pOut->PrintMessage("Drawing a triangle ==> filled,  Click three points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+	int x1coordinates[3] = { P1.x ,P2.x ,P3.x };
+	int y1coordinates[3] = { P1.y ,P2.y ,P3.y };
+
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->Drawrtriangle(x1coordinates, y1coordinates, gfxInfo, false);
+
+
+	// 2.3.4 - Drawing highlighted filled tritangle
+	pOut->PrintMessage("Drawing a triangle ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawrtriangle(x1coordinates, y1coordinates, gfxInfo, true);
+
+
+
+
 
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -137,6 +177,45 @@ int main()
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
 	///TODO: Add code to draw Hexagon in all possible states
+		// 2.3.1 - Drawing non-filled triangle
+	pOut->PrintMessage("Drawing a hexagon ==> non-filled,  Click centre");
+	pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
+	int xc = P1.x, yc = P1.y;
+	int x8coordinates[8] = {xc+61,xc+43,xc , xc-43,xc-63,xc-43,xc,xc+43};
+	int y8coordinates[8] = {yc ,yc-43,yc-61 ,yc-43,yc,yc+43,yc+63,yc+43};
+
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->Drawhexagon(x8coordinates, y8coordinates, gfxInfo, false);
+
+	///	// 2.3.2 - Drawing highlighted non-filled hexangle
+
+	pOut->PrintMessage("Drawing a hexagin ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawhexagon(x8coordinates, y8coordinates, gfxInfo, true);
+	
+	///////////////
+		// 2.3.3 - Drawing a filled hexagon
+	pOut->PrintMessage("Drawing a hexagon ==> filled,  Click  its centre ");
+	pIn->GetPointClicked(P2.x, P2.y);  // CENTRE OF HEXA
+	int x2c = P2.x, y2c = P2.y;
+	int x82coordinates[8] = { x2c + 61,x2c + 43,x2c , x2c - 43,x2c - 63,x2c - 43,x2c,x2c + 43 };
+	int y82coordinates[8] = { y2c ,y2c - 43,y2c - 61 ,y2c - 43,y2c,y2c + 43,y2c + 63,y2c + 43 };
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->Drawhexagon(x82coordinates, y82coordinates, gfxInfo, false);
+
+	 /////////////highlighted -filled
+
+	pOut->PrintMessage("Drawing a hexagon ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawhexagon(x82coordinates, y82coordinates, gfxInfo, true);
+
+
+
 
 	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
