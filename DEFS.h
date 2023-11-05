@@ -27,12 +27,17 @@ enum ActionType //The actions supported (you can add more if needed)
 	FUNC_STOP_REC,
 	FUNC_SAVE,
 	FUNC_LOAD,
+	ENTER_PLAY_MODE,
+	
 	FUNC_CLEAR_CANVAS,
 	FUNC_EXIT,
-	ENTER_PLAY_MODE,
 	DRAWING_AREA,
 	STATUS,
-	EMPTY
+	EMPTY,
+	ENTER_DRAW_MODE,
+	BY_COLOR,
+	BY_SHAPE,
+	BY_COLOR_SHAPE
 	///TODO: Add the other action types of the two modes
 };
 

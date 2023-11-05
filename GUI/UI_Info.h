@@ -58,6 +58,7 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	DRAW_MODE,
 	byColor,
 	byShape,
+	byColorShape,
 	PLAY_ITM_COUNT//no. of menu items ==> This should be the last line in this enum
 	
 };

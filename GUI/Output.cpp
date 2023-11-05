@@ -71,6 +71,8 @@ void Output::ClearStatusBar() const
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar() const
 {
+
+
 	UI.InterfaceMode = MODE_DRAW;
 
 	//You can draw the tool bar icons in any way you want.
@@ -125,6 +127,22 @@ void Output::CreateDrawToolBar() const
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
+	string MenuItemImages[PLAY_ITM_COUNT];
+
+
+	MenuItemImages[DRAW_MODE] = "images\\MenuItems\\drawingMode.jpg";
+	MenuItemImages[ byColor] = "images\\MenuItems\\byColor.jpg";
+	MenuItemImages[ byShape] = "images\\MenuItems\\by_shape.jpg";
+	MenuItemImages[byColorShape] = "images\\MenuItems\\by_color_shape.jpg";
+	
+	for (int i = 0; i < PLAY_ITM_COUNT ; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 5, UI.MenuItemWidth - 5, UI.ToolBarHeight - 5);
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen( BLACK, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+			
 	///TODO: write code to create Play mode menu
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -147,6 +165,7 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+
 
 color Output::getCrntDrawColor() const	//get current drawing color
 {	return UI.DrawColor;	}

@@ -11,10 +11,13 @@ int main()
 	Output *pOut = new Output();
 	Input *pIn = pOut->CreateInput();
 
+
+
 	//Starting the test
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
+	//Create Play Mode
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 1:	
@@ -183,14 +186,22 @@ int main()
 	
 	pOut->PrintMessage("Testing Input ability to read strings");
 
+
+
+	
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
+ 
 	// 2- After reading the string clear the status bar
+	
 	// 3- print on the status bar "You Entered" then print the string
 
-
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
+
+
+	
+
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
@@ -238,6 +249,11 @@ int main()
 		case FUNC_REDO:
 			pOut->PrintMessage("Action: redo , Click anywhere");
 			break;
+
+		case FUNC_UNDO:
+			pOut->PrintMessage("Action: undo , Click anywhere");
+			break;
+
 		case FUNC_SELECT:
 			pOut->PrintMessage("Action: select a drawing , Click anywhere");
 			break;
@@ -280,19 +296,44 @@ int main()
 			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
 			break;
 
+		case CLEAR_CANVAS:
+			pOut->PrintMessage("Action: a click on clear canvas, Click anywhere");
+			break;
+		case ITM_DELETE:
+			pOut->PrintMessage("Action: a click on delete, Click on an item");
+			break;
+
+
 		case ENTER_PLAY_MODE:
 			pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
 			pOut->CreatePlayToolBar();
 			break;
 
+		case ENTER_DRAW_MODE:
+			pOut->PrintMessage("Action: Switch to Draw Mode, Click anywhere");
+			break;
+
+		case   BY_COLOR :
+			pOut->PrintMessage("Action:Figure by Color , Click anywhere ");
+			break;
+
+		case  BY_SHAPE :
+			pOut->PrintMessage("Action:Figure by Shape , Click anywhere");
+			break;
+
+		case  BY_COLOR_SHAPE:
+			pOut->PrintMessage("Action:Figure by Shape & Color , Click anywhere");
+			break;
 
 			///TODO: Add more cases for the other action types
+			
 
-
-		case FUNC_EXIT:
+		case FUNC_EXIT :
 			break;
 		}
 	} while (ActType != FUNC_EXIT);
+	
+
 
 
 
