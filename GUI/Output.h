@@ -6,6 +6,7 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
+	string TEXT; // STRING TSET
 public:
 	Output();		
 
@@ -24,7 +25,7 @@ public:
 	void Output::Drawrtriangle(int x1, int y1, int x2, int y2, int x3, int y3, GfxInfo RectGfxInfo, bool selected) const;
 	void Output::DrawCirc(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const;
 	void Drawhexagon(const int* xcoordinates, const int* ycoordinates, GfxInfo RectGfxInfo, bool selected) const;
-
+	void printstring(string x);
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
 	color getCrntDrawColor() const;	//get current drwawing color

@@ -28,10 +28,12 @@ string Input::GetSrting(Output *pO) const
 		else
 			Label += Key;
 		if (pO)
-			pO->PrintMessage(Label);
-	}
-}
 
+			pO->PrintMessage(Label);
+	
+	}
+
+}
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
 {	

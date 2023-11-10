@@ -250,9 +250,11 @@ void Output::Drawhexagon(const int* xcoordinates, const int* ycoordinates, GfxIn
 		style = FRAME;
 
 
-	pWind->DrawPolygon(xcoordinates, ycoordinates, 8, style);
+	pWind-> DrawPolygon(xcoordinates, ycoordinates, 8, style);
 
-
+}
+void Output::printstring(string x)
+{
 
 
 }

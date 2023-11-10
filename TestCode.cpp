@@ -1,5 +1,6 @@
 #include "GUI\Input.h"
 #include "GUI\Output.h"
+#include <string>
 
 //This is a test code to test the Input and Output classes
 
@@ -13,6 +14,8 @@ int main()
 
 	//Starting the test
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
+	pOut->printstring("D:\clone\voice\nn.mp3");
+
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
 
@@ -263,10 +266,15 @@ int main()
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 
-	pIn->GetSrting(pOut);
-
+	
+    pIn->GetSrting(pOut);
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
+
+
+
+
+
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
