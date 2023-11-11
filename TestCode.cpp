@@ -130,10 +130,28 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	// 2.3.1 - Drawing non-filled triangle
-	pOut->PrintMessage("Drawing a triangle ==> non-filled,  Click three points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->GetPointClicked(P3.x, P3.y);
+	bool invalid = 1;
+
+        do
+		{
+			pOut->PrintMessage("Drawing a triangle non filled Click 3 points in drawing area");
+			pIn->GetPointClicked(P1.x, P1.y);
+			pIn->GetPointClicked(P2.x, P2.y);
+			pIn->GetPointClicked(P3.x, P3.y);
+
+			if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5))
+			{
+				pOut->PrintMessage("In Valid points , Please Click points in drawing area , Click to draw triangle");
+				pIn->GetPointClicked(x, y);	//Wait for any click
+
+
+			}
+			else invalid = false;
+
+		} while (invalid);
+
+
+
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
@@ -142,14 +160,30 @@ int main()
 
 	// 2.3.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a triangle ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click=
 	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, true);
 
 	// 2.3.3 - Drawing a filled rectangle
-	pOut->PrintMessage("Drawing a triangle ==> filled,  Click three points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->GetPointClicked(P3.x, P3.y);
+	invalid = 1;
+
+	do
+	{
+		pOut->PrintMessage("Drawing a triangle ==> filled, Click 3 points in drawing area");
+		pIn->GetPointClicked(P1.x, P1.y);
+		pIn->GetPointClicked(P2.x, P2.y);
+		pIn->GetPointClicked(P3.x, P3.y);
+
+		if ((P1.y) < (UI.ToolBarHeight+5) || (P2.y) < (UI.ToolBarHeight+5) || (P3.y) < (UI.ToolBarHeight + 5))
+		{
+			pOut->PrintMessage("In Valid points , Please enter points in drawing area , Click to draw triangle");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+
+
+		}
+		else invalid = false;
+
+	} while (invalid);
+
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
@@ -178,11 +212,25 @@ int main()
 
 	///TODO: Add code to draw Hexagon in all possible states
 		// 2.3.1 - Drawing non-filled triangle
-	pOut->PrintMessage("Drawing a hexagon ==> non-filled,  Click centre");
-	pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
+	invalid = 1;
+	do
+	{
+		pOut->PrintMessage("Drawing a hexagon ==> non-filled,  Click centre");
+		pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
+		if (((P1.y) - 61) < (UI.ToolBarHeight+5))
+		{
+			pOut->PrintMessage("Invalid centre , click to draw hexagon");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+
+		}
+		else invalid = 0;
+
+	} while (invalid);
+
 	int xc = P1.x, yc = P1.y;
 	int x8coordinates[8] = {xc+61,xc+43,xc , xc-43,xc-63,xc-43,xc,xc+43};
 	int y8coordinates[8] = {yc ,yc-43,yc-61 ,yc-43,yc,yc+43,yc+63,yc+43};
+
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
@@ -197,8 +245,22 @@ int main()
 	
 	///////////////
 		// 2.3.3 - Drawing a filled hexagon
-	pOut->PrintMessage("Drawing a hexagon ==> filled,  Click  its centre ");
-	pIn->GetPointClicked(P2.x, P2.y);  // CENTRE OF HEXA
+
+	invalid = 1;
+	do
+	{
+		pOut->PrintMessage("Drawing a hexagon ==> filled,  Click centre");
+		pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
+		if (((P1.y) - 61) < (UI.ToolBarHeight + 5))
+		{
+			pOut->PrintMessage("Invalid centre , click to draw hexagon");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+
+		}
+		else invalid = 0;
+
+	} while (invalid);
+
 	int x2c = P2.x, y2c = P2.y;
 	int x82coordinates[8] = { x2c + 61,x2c + 43,x2c , x2c - 43,x2c - 63,x2c - 43,x2c,x2c + 43 };
 	int y82coordinates[8] = { y2c ,y2c - 43,y2c - 61 ,y2c - 43,y2c,y2c + 43,y2c + 63,y2c + 43 };
