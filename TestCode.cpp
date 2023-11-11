@@ -49,8 +49,20 @@ int main()
 
 	// 2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
+
 	pIn->GetPointClicked(P1.x, P1.y);
+	while (!(P1.y > 60 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+	pOut->PrintMessage("click second point");
 	pIn->GetPointClicked(P2.x, P2.y);
+	while (!(P2.y > 60 && P2.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+	}
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
@@ -66,7 +78,18 @@ int main()
 	// 2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
+	while (!(P1.y > 60 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+	pOut->PrintMessage("click second point");
 	pIn->GetPointClicked(P2.x, P2.y);
+	while (!(P2.y > 60 && P2.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+	}
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
@@ -97,10 +120,19 @@ int main()
 	gfxInfo.isFilled = false;
 	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click center point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	P2.x = P1.x + 70;
-	P2.y = P1.y + 70;
-	P1.x -= 70;
-	P1.y -= 70;
+	P2.x = P1.x + 60;
+	P2.y = P1.y + 60;
+	P1.x -= 60;
+	P1.y -= 60;
+	while ((!(P1.y > 60 && P1.y < 580)) || (!(P2.y > 60 && P2.y < 580)))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+		P2.x = P1.x + 60;
+		P2.y = P1.y + 60;
+		P1.x -= 60;
+		P1.y -= 60;
+	}
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -110,10 +142,19 @@ int main()
 	gfxInfo.isFilled = true;
 	pOut->PrintMessage("Drawing a Square ==> filled,  Click center point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	P2.x = P1.x + 70;
-	P2.y = P1.y + 70;
-	P1.x -= 70;
-	P1.y -= 70;
+	P2.x = P1.x + 60;
+	P2.y = P1.y + 60;
+	P1.x -= 60;
+	P1.y -= 60;
+	while ((!(P1.y > 60 && P1.y < 580)) || (!(P2.y > 60 && P2.y < 580)))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+		P2.x = P1.x + 60;
+		P2.y = P1.y + 60;
+		P1.x -= 60;
+		P1.y -= 60;
+	}
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -294,7 +335,24 @@ int main()
 	gfxInfo.isFilled = false;
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->GetPointClicked(P2.x, P2.y);
+	while (!(P1.y > 60 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+		pOut->PrintMessage("click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+		int r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+		while (!((P1.y - r) > 60 && (P1.y + r) < 580))
+		{
+			pOut->PrintMessage("click another point ");
+			pIn->GetPointClicked(P2.x, P2.y);
+			r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+
+		}
+
+
+
 	pOut->DrawCirc(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Circle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -304,7 +362,25 @@ int main()
 	gfxInfo.isFilled = true;
 	pOut->PrintMessage("Drawing a Circle ==> filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
+	while (!(P1.y > 60 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+	pOut->PrintMessage("click another point ");
 	pIn->GetPointClicked(P2.x, P2.y);
+	 r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+	while (!((P1.y - r) > 60 && (P1.y + r) < 580))
+	{
+		pOut->PrintMessage("click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+		r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+
+	}
+
+
+
+
 	pOut->DrawCirc(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Circle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -334,7 +410,9 @@ int main()
 
 	// 3- print on the status bar "You Entered" then print the string
 
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	pIn->GetSrting(pOut);
+
+	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
 
 
