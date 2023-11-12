@@ -291,8 +291,8 @@ int main()
 	do
 	{
 		pOut->PrintMessage("Drawing a hexagon ==> filled,  Click centre");
-		pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
-		if ((P1.y) - 61 < (UI.ToolBarHeight + 5) || (P1.y) + 61 > (650 - 75)) // window hieght - tool bat height + 5 to be in safe
+		pIn->GetPointClicked(P2.x, P2.y);  // CENTRE OF HEXA
+		if ((P2.y) - 61 < (UI.ToolBarHeight + 5) || (P2.y) + 61 > (650 - 75)) // window hieght - tool bat height + 5 to be in safe
 		{
 			pOut->PrintMessage("Invalid centre , click to draw hexagon");
 			pIn->GetPointClicked(x, y);	//Wait for any click
