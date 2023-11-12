@@ -85,6 +85,7 @@ void Output::CreateDrawToolBar() const
 
 	MenuItemImages[ITM_RECT] = "images\\MenuItems\\rectangle.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\exit.jpg";
+
 	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\circle.jpg";
 	MenuItemImages[ITM_TRIA] = "images\\MenuItems\\triangle.jpg";
 	MenuItemImages[ITM_SQUA] = "images\\MenuItems\\square.jpg";
@@ -104,7 +105,6 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_STOP_REC] = "images\\MenuItems\\stop.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\export.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\import.jpg";
-
 	MenuItemImages[PLAY_MODE] = "images\\MenuItems\\playmode.jpg";
 	MenuItemImages[ADD_IMAGE] = "images\\MenuItems\\importImage.jpg";
 	MenuItemImages[CLEAR_CANVAS] = "images\\MenuItems\\clearCanvas.jpg";
@@ -142,6 +142,7 @@ void Output::CreatePlayToolBar() const
 	MenuItemImages[byColor] = "images\\MenuItems\\byColor.jpg";
 	MenuItemImages[byShape] = "images\\MenuItems\\by_shape.jpg";
 	MenuItemImages[byColorShape] = "images\\MenuItems\\by_color_shape.jpg";
+	MenuItemImages[ ITM_EXIT_playMode] = "images\\MenuItems\\exit.jpg";
 
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 5, UI.MenuItemWidth - 5, UI.ToolBarHeight - 5);

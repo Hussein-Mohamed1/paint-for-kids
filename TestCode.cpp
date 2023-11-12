@@ -553,12 +553,15 @@ int main()
 			delete pOut;
 			return 0;
 			break;
+		
+			case FUNC_EXIT_playMode:
+				pOut->PrintMessage("Action: Exitting");
+				delete pIn;
+				delete pOut;
+				return 0;
+				break;
 		}
-	} while (ActType != FUNC_EXIT);
-
-
-
-
+	} while (ActType != FUNC_EXIT && ActType != FUNC_EXIT_playMode );
 
 	/// Exiting
 	pOut->PrintMessage("Action: EXIT, test is finished, click anywhere to exit");
