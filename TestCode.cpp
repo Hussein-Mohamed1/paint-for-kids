@@ -335,7 +335,7 @@ int main()
 	gfxInfo.isFilled = false;
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	while (!(P1.y > 60 && P1.y < 580))
+	while (!(P1.y > 65 && P1.y < 580))
 	{
 		pOut->PrintMessage("wrong click another center");
 		pIn->GetPointClicked(P1.x, P1.y);
@@ -343,7 +343,7 @@ int main()
 		pOut->PrintMessage("click another point ");
 		pIn->GetPointClicked(P2.x, P2.y);
 		int r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
-		while (!((P1.y - r) > 60 && (P1.y + r) < 580))
+		while (!((P1.y - r) > 65 && (P1.y + r) < 580))
 		{
 			pOut->PrintMessage("click another point ");
 			pIn->GetPointClicked(P2.x, P2.y);
@@ -362,7 +362,7 @@ int main()
 	gfxInfo.isFilled = true;
 	pOut->PrintMessage("Drawing a Circle ==> filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	while (!(P1.y > 60 && P1.y < 580))
+	while (!(P1.y > 65 && P1.y < 580))
 	{
 		pOut->PrintMessage("wrong click another center");
 		pIn->GetPointClicked(P1.x, P1.y);
@@ -370,7 +370,7 @@ int main()
 	pOut->PrintMessage("click another point ");
 	pIn->GetPointClicked(P2.x, P2.y);
 	 r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
-	while (!((P1.y - r) > 60 && (P1.y + r) < 580))
+	while (!((P1.y - r) > 65 && (P1.y + r) < 580))
 	{
 		pOut->PrintMessage("click another point ");
 		pIn->GetPointClicked(P2.x, P2.y);
