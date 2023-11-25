@@ -139,9 +139,9 @@ void Output::CreatePlayToolBar() const
 	string MenuItemImages[PLAY_ITM_COUNT];
 
 	MenuItemImages[DRAW_MODE] = "images\\MenuItems\\drawingMode.jpg";
-	MenuItemImages[byColor] = "images\\MenuItems\\byColor.jpg";
-	MenuItemImages[byShape] = "images\\MenuItems\\by_shape.jpg";
-	MenuItemImages[byColorShape] = "images\\MenuItems\\by_color_shape.jpg";
+	MenuItemImages[byColor] = "images\\MenuItems\\color.jpg";
+	MenuItemImages[byShape] = "images\\MenuItems\\shape.jpg";
+	MenuItemImages[byColorShape] = "images\\MenuItems\\shapeAndColor.jpg";
 
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 5, UI.MenuItemWidth - 5, UI.ToolBarHeight - 5);
