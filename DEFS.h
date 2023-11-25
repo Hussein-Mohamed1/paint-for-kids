@@ -31,6 +31,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	
 	FUNC_CLEAR_CANVAS,
 	FUNC_EXIT,
+	FUNC_EXIT_playMode,
 	DRAWING_AREA,
 	STATUS,
 	EMPTY,

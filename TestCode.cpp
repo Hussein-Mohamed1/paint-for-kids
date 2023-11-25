@@ -1,5 +1,6 @@
 #include "GUI\Input.h"
 #include "GUI\Output.h"
+#include <string>
 
 //This is a test code to test the Input and Output classes
 
@@ -39,7 +40,7 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
-	Point P1, P2;
+	Point P1, P2 , P3;
 
 	/// 2.1- Rectangle Test ///
 	/// =================== 
@@ -48,8 +49,20 @@ int main()
 
 	// 2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
+
 	pIn->GetPointClicked(P1.x, P1.y);
+	while (!(P1.y > 65 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+	pOut->PrintMessage("click second point");
 	pIn->GetPointClicked(P2.x, P2.y);
+	while (!(P2.y > 65 && P2.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+	}
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
@@ -65,7 +78,18 @@ int main()
 	// 2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
+	while (!(P1.y > 65 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+	pOut->PrintMessage("click second point");
 	pIn->GetPointClicked(P2.x, P2.y);
+	while (!(P2.y > 65 && P2.y < 580))
+	{
+		pOut->PrintMessage("wrong click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+	}
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
@@ -96,10 +120,19 @@ int main()
 	gfxInfo.isFilled = false;
 	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click center point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	P2.x = P1.x + 70;
-	P2.y = P1.y + 70;
-	P1.x -= 70;
-	P1.y -= 70;
+	P2.x = P1.x + 60;
+	P2.y = P1.y + 60;
+	P1.x -= 60;
+	P1.y -= 60;
+	while ((!(P1.y > 65 && P1.y < 580)) || (!(P2.y > 65 && P2.y < 580)))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+		P2.x = P1.x + 60;
+		P2.y = P1.y + 60;
+		P1.x -= 60;
+		P1.y -= 60;
+	}
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -109,10 +142,19 @@ int main()
 	gfxInfo.isFilled = true;
 	pOut->PrintMessage("Drawing a Square ==> filled,  Click center point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	P2.x = P1.x + 70;
-	P2.y = P1.y + 70;
-	P1.x -= 70;
-	P1.y -= 70;
+	P2.x = P1.x + 60;
+	P2.y = P1.y + 60;
+	P1.x -= 60;
+	P1.y -= 60;
+	while ((!(P1.y > 65 && P1.y < 580)) || (!(P2.y > 65 && P2.y < 580)))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+		P2.x = P1.x + 60;
+		P2.y = P1.y + 60;
+		P1.x -= 60;
+		P1.y -= 60;
+	}
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -128,7 +170,77 @@ int main()
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	///TODO: Add code to draw Triangle in all possible states
+	// 2.3.1 - Drawing non-filled triangle
+	bool invalid = 1;
+
+        do
+		{
+			pOut->PrintMessage("Drawing a triangle non filled Click 3 points in drawing area");
+			pIn->GetPointClicked(P1.x, P1.y);
+			pIn->GetPointClicked(P2.x, P2.y);
+			pIn->GetPointClicked(P3.x, P3.y);
+
+			if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5) || (P1.y) > (650 - 75) || (P2.y) > (650 - 75) || (P3.y) > (650 - 75)) // window - status bar height to get y coordinate of statusbar
+			{
+				pOut->PrintMessage("In Valid points , Please Click points in drawing area , Click to draw triangle");
+				pIn->GetPointClicked(x, y);	//Wait for any click
+
+
+			}
+			else invalid = false;
+
+		} while (invalid);
+
+
+
+
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->Drawrtriangle(P1.x,P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, false);
+
+	// 2.3.2 - Drawing highlighted non-filled rectangle
+	pOut->PrintMessage("Drawing a triangle ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click=
+	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, true);
+
+	// 2.3.3 - Drawing a filled rectangle
+	invalid = 1;
+
+	do
+	{
+		pOut->PrintMessage("Drawing a triangle ==> filled, Click 3 points in drawing area");
+		pIn->GetPointClicked(P1.x, P1.y);
+		pIn->GetPointClicked(P2.x, P2.y);
+		pIn->GetPointClicked(P3.x, P3.y);
+
+		if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5) || (P1.y) > (650 - 75) || (P2.y) > (650 - 75) || (P3.y) > (650 - 75)) // window - status bar height to get y coordinate of statusbar
+		{
+			pOut->PrintMessage("In Valid points , Please enter points in drawing area , Click to draw triangle");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+
+
+		}
+		else invalid = false;
+
+	} while (invalid);
+
+
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, false);
+
+
+	// 2.3.4 - Drawing highlighted filled tritangle
+	pOut->PrintMessage("Drawing a triangle ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawrtriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, gfxInfo, true);
+
+
+
+
 
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -140,6 +252,73 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///TODO: Add code to draw Hexagon in all possible states
+		// 2.3.1 - Drawing non-filled triangle
+	invalid = 1;
+	do
+	{
+		pOut->PrintMessage("Drawing a hexagon ==> non-filled,  Click centre");
+		pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
+		if ((P1.y) - 61 <(UI.ToolBarHeight+5) || (P1.y) + 61> (650 -75))
+		{
+			pOut->PrintMessage("Invalid centre , click to draw hexagon");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+
+		}
+		else invalid = 0;
+
+	} while (invalid);
+
+	int xc = P1.x, yc = P1.y;
+	int x8coordinates[8] = {xc+61,xc+43,xc , xc-43,xc-63,xc-43,xc,xc+43};
+	int y8coordinates[8] = {yc ,yc-43,yc-61 ,yc-43,yc,yc+43,yc+63,yc+43};
+
+
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->Drawhexagon(x8coordinates, y8coordinates, gfxInfo, false);
+
+	///	// 2.3.2 - Drawing highlighted non-filled hexangle
+
+	pOut->PrintMessage("Drawing a hexagin ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawhexagon(x8coordinates, y8coordinates, gfxInfo, true);
+	
+	///////////////
+		// 2.3.3 - Drawing a filled hexagon
+
+	invalid = 1;
+	do
+	{
+		pOut->PrintMessage("Drawing a hexagon ==> filled,  Click centre");
+		pIn->GetPointClicked(P2.x, P2.y);  // CENTRE OF HEXA
+		if ((P2.y) - 61 < (UI.ToolBarHeight + 5) || (P2.y) + 61 > (650 - 75)) // window hieght - tool bat height + 5 to be in safe
+		{
+			pOut->PrintMessage("Invalid centre , click to draw hexagon");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+
+		}
+		else invalid = 0;
+
+	} while (invalid);
+
+	int x2c = P2.x, y2c = P2.y;
+	int x82coordinates[8] = { x2c + 61,x2c + 43,x2c , x2c - 43,x2c - 63,x2c - 43,x2c,x2c + 43 };
+	int y82coordinates[8] = { y2c ,y2c - 43,y2c - 61 ,y2c - 43,y2c,y2c + 43,y2c + 63,y2c + 43 };
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->Drawhexagon(x82coordinates, y82coordinates, gfxInfo, false);
+
+	 /////////////highlighted -filled
+
+	pOut->PrintMessage("Drawing a hexagon ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->Drawhexagon(x82coordinates, y82coordinates, gfxInfo, true);
+
+
+
 
 	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -156,7 +335,24 @@ int main()
 	gfxInfo.isFilled = false;
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->GetPointClicked(P2.x, P2.y);
+	while (!(P1.y > 65 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+		pOut->PrintMessage("click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+		int r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+		while (!((P1.y - r) > 65 && (P1.y + r) < 580))
+		{
+			pOut->PrintMessage("click another point ");
+			pIn->GetPointClicked(P2.x, P2.y);
+			r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+
+		}
+
+
+
 	pOut->DrawCirc(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Circle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -166,7 +362,25 @@ int main()
 	gfxInfo.isFilled = true;
 	pOut->PrintMessage("Drawing a Circle ==> filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
+	while (!(P1.y > 65 && P1.y < 580))
+	{
+		pOut->PrintMessage("wrong click another center");
+		pIn->GetPointClicked(P1.x, P1.y);
+	}
+	pOut->PrintMessage("click another point ");
 	pIn->GetPointClicked(P2.x, P2.y);
+	 r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+	while (!((P1.y - r) > 65 && (P1.y + r) < 580))
+	{
+		pOut->PrintMessage("click another point ");
+		pIn->GetPointClicked(P2.x, P2.y);
+		r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
+
+	}
+
+
+
+
 	pOut->DrawCirc(P1, P2, gfxInfo, false);
 	pOut->PrintMessage("Drawing a Circle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);
@@ -196,7 +410,9 @@ int main()
 
 	// 3- print on the status bar "You Entered" then print the string
 
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	pIn->GetSrting(pOut);
+
+	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
 
 
@@ -337,12 +553,15 @@ int main()
 			delete pOut;
 			return 0;
 			break;
+		
+			case FUNC_EXIT_playMode:
+				pOut->PrintMessage("Action: Exitting");
+				delete pIn;
+				delete pOut;
+				return 0;
+				break;
 		}
-	} while (ActType != FUNC_EXIT);
-
-
-
-
+	} while (ActType != FUNC_EXIT && ActType != FUNC_EXIT_playMode );
 
 	/// Exiting
 	pOut->PrintMessage("Action: EXIT, test is finished, click anywhere to exit");

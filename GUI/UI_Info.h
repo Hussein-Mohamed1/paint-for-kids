@@ -43,6 +43,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	CLEAR_CANVAS,
 	ITM_EXIT,
 	DRAW_ITM_COUNT,
+	
 	//no. of menu items ==> This should be the last line in this enum
 
 	
@@ -59,6 +60,7 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	byColor,
 	byShape,
 	byColorShape,
+	ITM_EXIT_playMode,
 	PLAY_ITM_COUNT//no. of menu items ==> This should be the last line in this enum
 	
 };

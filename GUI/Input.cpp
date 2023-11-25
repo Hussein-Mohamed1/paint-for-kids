@@ -79,7 +79,7 @@ ActionType Input::GetUserAction() const
 		case PLAY_MODE: return ENTER_PLAY_MODE;
 		case CLEAR_CANVAS: return FUNC_CLEAR_CANVAS;
 		case ITM_EXIT: return FUNC_EXIT;
-
+	
 
 
 		default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -109,6 +109,8 @@ ActionType Input::GetUserAction() const
 		case byShape: return BY_SHAPE;
 
 		case byColorShape: return BY_COLOR_SHAPE;
+		
+		case ITM_EXIT_playMode: return FUNC_EXIT_playMode;
 		}
 
 		//just for now. This should be updated

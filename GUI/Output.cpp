@@ -85,6 +85,7 @@ void Output::CreateDrawToolBar() const
 
 	MenuItemImages[ITM_RECT] = "images\\MenuItems\\rectangle.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\exit.jpg";
+
 	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\circle.jpg";
 	MenuItemImages[ITM_TRIA] = "images\\MenuItems\\triangle.jpg";
 	MenuItemImages[ITM_SQUA] = "images\\MenuItems\\square.jpg";
@@ -104,7 +105,6 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_STOP_REC] = "images\\MenuItems\\stop.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\export.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\import.jpg";
-
 	MenuItemImages[PLAY_MODE] = "images\\MenuItems\\playmode.jpg";
 	MenuItemImages[ADD_IMAGE] = "images\\MenuItems\\importImage.jpg";
 	MenuItemImages[CLEAR_CANVAS] = "images\\MenuItems\\clearCanvas.jpg";
@@ -142,7 +142,7 @@ void Output::CreatePlayToolBar() const
 	MenuItemImages[byColor] = "images\\MenuItems\\color.jpg";
 	MenuItemImages[byShape] = "images\\MenuItems\\shape.jpg";
 	MenuItemImages[byColorShape] = "images\\MenuItems\\shapeAndColor.jpg";
-
+	MenuItemImages[ITM_EXIT_playMode] = "images\\MenuItems\\exit.jpg";
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 5, UI.MenuItemWidth - 5, UI.ToolBarHeight - 5);
 
@@ -215,7 +215,6 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-
 }
 
 void Output::DrawCirc(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
@@ -239,6 +238,62 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 	pWind->DrawCircle(P1.x, P1.y, sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y)), style);
 }
+void Output::Drawrtriangle( int x1 , int y1, int x2, int y2, int x3, int y3, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawTriangle(x1,y1,x2,y2,x3,y3, style);
+
+
+
+}
+void Output::Drawhexagon(const int* xcoordinates, const int* ycoordinates, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind-> DrawPolygon(xcoordinates, ycoordinates, 8, style);
+
+}
+void Output::printstring(string x)
+{
+
+
+}
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
