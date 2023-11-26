@@ -51,14 +51,14 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 
 	pIn->GetPointClicked(P1.x, P1.y);
-	while (!(P1.y > 65 && P1.y < 580))
+	while (!(P1.y > UI.ToolBarHeight + 5 && P1.y < UI.height-UI.StatusBarHeight-5))
 	{
 		pOut->PrintMessage("wrong click another point ");
 		pIn->GetPointClicked(P1.x, P1.y);
 	}
 	pOut->PrintMessage("click second point");
 	pIn->GetPointClicked(P2.x, P2.y);
-	while (!(P2.y > 65 && P2.y < 580))
+	while (!(P2.y > UI.ToolBarHeight + 5 && P2.y < UI.height - UI.StatusBarHeight-5))
 	{
 		pOut->PrintMessage("wrong click another point ");
 		pIn->GetPointClicked(P2.x, P2.y);
@@ -78,14 +78,14 @@ int main()
 	// 2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
-	while (!(P1.y > 65 && P1.y < 580))
+	while (!(P1.y > UI.ToolBarHeight + 5 && P1.y < UI.height - UI.StatusBarHeight-5))
 	{
 		pOut->PrintMessage("wrong click another point ");
 		pIn->GetPointClicked(P1.x, P1.y);
 	}
 	pOut->PrintMessage("click second point");
 	pIn->GetPointClicked(P2.x, P2.y);
-	while (!(P2.y > 65 && P2.y < 580))
+	while (!(P2.y > UI.ToolBarHeight + 5 && P2.y < UI.height - UI.StatusBarHeight-5))
 	{
 		pOut->PrintMessage("wrong click another point ");
 		pIn->GetPointClicked(P2.x, P2.y);
@@ -124,7 +124,7 @@ int main()
 	P2.y = P1.y + 60;
 	P1.x -= 60;
 	P1.y -= 60;
-	while ((!(P1.y > 65 && P1.y < 580)) || (!(P2.y > 65 && P2.y < 580)))
+	while ((!(P1.y > UI.ToolBarHeight + 5 && P1.y < UI.height - UI.StatusBarHeight-5)) || (!(P2.y > UI.ToolBarHeight + 5 && P2.y < UI.height - UI.StatusBarHeight-5))||(P1.x<5 || P2.x>=UI.width-15))
 	{
 		pOut->PrintMessage("wrong click another center");
 		pIn->GetPointClicked(P1.x, P1.y);
@@ -146,7 +146,7 @@ int main()
 	P2.y = P1.y + 60;
 	P1.x -= 60;
 	P1.y -= 60;
-	while ((!(P1.y > 65 && P1.y < 580)) || (!(P2.y > 65 && P2.y < 580)))
+	while ((!(P1.y > (UI.ToolBarHeight + 5) && P1.y < (UI.height - UI.StatusBarHeight-5))) || (!(P2.y > (UI.ToolBarHeight + 5) && P2.y < (UI.height - UI.StatusBarHeight-5)))||(P1.x<5 || P2.x>=(UI.width-15)))
 	{
 		pOut->PrintMessage("wrong click another center");
 		pIn->GetPointClicked(P1.x, P1.y);
@@ -335,7 +335,7 @@ int main()
 	gfxInfo.isFilled = false;
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	while (!(P1.y > 65 && P1.y < 580))
+	while (!(P1.y > UI.ToolBarHeight + 5 && P1.y < UI.height - UI.StatusBarHeight-5))
 	{
 		pOut->PrintMessage("wrong click another center");
 		pIn->GetPointClicked(P1.x, P1.y);
@@ -343,7 +343,7 @@ int main()
 		pOut->PrintMessage("click another point ");
 		pIn->GetPointClicked(P2.x, P2.y);
 		int r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
-		while (!((P1.y - r) > 65 && (P1.y + r) < 580))
+		while (!((P1.y - r) > UI.ToolBarHeight + 5 && (P1.y + r) < UI.height - UI.StatusBarHeight) || (P1.x - r) < 5 || (P1.x + r) >= UI.width-15 )
 		{
 			pOut->PrintMessage("click another point ");
 			pIn->GetPointClicked(P2.x, P2.y);
@@ -362,7 +362,7 @@ int main()
 	gfxInfo.isFilled = true;
 	pOut->PrintMessage("Drawing a Circle ==> filled,  Click center and another point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	while (!(P1.y > 65 && P1.y < 580))
+	while (!(P1.y > UI.ToolBarHeight + 5 && P1.y < UI.height - UI.StatusBarHeight))
 	{
 		pOut->PrintMessage("wrong click another center");
 		pIn->GetPointClicked(P1.x, P1.y);
@@ -370,7 +370,7 @@ int main()
 	pOut->PrintMessage("click another point ");
 	pIn->GetPointClicked(P2.x, P2.y);
 	 r = sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y));
-	while (!((P1.y - r) > 65 && (P1.y + r) < 580))
+	 while (!((P1.y - r) > UI.ToolBarHeight + 5 && (P1.y + r) < UI.height - UI.StatusBarHeight) || (P1.x - r) < 5 || (P1.x + r) >= UI.width-15)
 	{
 		pOut->PrintMessage("click another point ");
 		pIn->GetPointClicked(P2.x, P2.y);
@@ -399,7 +399,10 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->PrintMessage("Testing Input ability to read strings");
-
+	string s;
+	s = "you entered : ";
+	s += pIn->GetSrting(pOut);
+	pOut->PrintMessage(s); 
 
 
 
