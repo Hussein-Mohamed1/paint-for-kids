@@ -180,7 +180,7 @@ int main()
 			pIn->GetPointClicked(P2.x, P2.y);
 			pIn->GetPointClicked(P3.x, P3.y);
 
-			if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5) || (P1.y) > (650 - 75) || (P2.y) > (650 - 75) || (P3.y) > (650 - 75)) // window - status bar height to get y coordinate of statusbar
+			if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5) || (P1.y) > (UI.height - UI.StatusBarHeight + 5) || (P2.y) > (UI.height - UI.StatusBarHeight + 5) || (P3.y) > (UI.height - UI.StatusBarHeight + 5)) // window - status bar height to get y coordinate of statusbar
 			{
 				pOut->PrintMessage("In Valid points , Please Click points in drawing area , Click to draw triangle");
 				pIn->GetPointClicked(x, y);	//Wait for any click
@@ -214,7 +214,7 @@ int main()
 		pIn->GetPointClicked(P2.x, P2.y);
 		pIn->GetPointClicked(P3.x, P3.y);
 
-		if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5) || (P1.y) > (650 - 75) || (P2.y) > (650 - 75) || (P3.y) > (650 - 75)) // window - status bar height to get y coordinate of statusbar
+		if ((P1.y) < (UI.ToolBarHeight + 5) || (P2.y) < (UI.ToolBarHeight + 5) || (P3.y) < (UI.ToolBarHeight + 5) || (P1.y) > (UI.height - UI.StatusBarHeight + 5) || (P2.y) > (UI.height - UI.StatusBarHeight + 5) || (P3.y) > (UI.height - UI.StatusBarHeight + 5)) // window - status bar height to get y coordinate of statusbar
 		{
 			pOut->PrintMessage("In Valid points , Please enter points in drawing area , Click to draw triangle");
 			pIn->GetPointClicked(x, y);	//Wait for any click
@@ -258,7 +258,8 @@ int main()
 	{
 		pOut->PrintMessage("Drawing a hexagon ==> non-filled,  Click centre");
 		pIn->GetPointClicked(P1.x, P1.y);  // CENTRE OF HEXA
-		if ((P1.y) - 61 <(UI.ToolBarHeight+5) || (P1.y) + 61> (650 -75))
+		if ((P1.y) - 61 < (UI.ToolBarHeight + 5) || (P1.y) + 61 > (UI.height - UI.StatusBarHeight + 5)  //  vertical validation : window hieght - tool bat height + 5 to be in safe
+			|| ( (P1.x) + 61) > (UI.width -175) || (P1.x)- 61  < 0) // horizontal validation 
 		{
 			pOut->PrintMessage("Invalid centre , click to draw hexagon");
 			pIn->GetPointClicked(x, y);	//Wait for any click
@@ -292,7 +293,8 @@ int main()
 	{
 		pOut->PrintMessage("Drawing a hexagon ==> filled,  Click centre");
 		pIn->GetPointClicked(P2.x, P2.y);  // CENTRE OF HEXA
-		if ((P2.y) - 61 < (UI.ToolBarHeight + 5) || (P2.y) + 61 > (650 - 75)) // window hieght - tool bat height + 5 to be in safe
+		if ((P2.y) - 61 < (UI.ToolBarHeight + 5) || (P2.y) + 61 > (UI.height - UI.StatusBarHeight + 5)  //  vertical validation : window hieght - tool bat height + 5 to be in safe
+		 ||( (P2.x)+61) > (UI.width - 175) || (P2.x)-61<0 ) // horizontal validation 
 		{
 			pOut->PrintMessage("Invalid centre , click to draw hexagon");
 			pIn->GetPointClicked(x, y);	//Wait for any click
@@ -302,9 +304,9 @@ int main()
 
 	} while (invalid);
 
-	int x2c = P2.x, y2c = P2.y;
-	  int x82coordinates[8] = { x2c + 61, x2c + 43,x2c , x2c - 43,x2c - 63,x2c - 43,x2c,x2c + 43 };
-	  int y82coordinates[8] = { y2c , y2c - 43,y2c - 61 ,y2c - 43,y2c,y2c + 43,y2c + 63,y2c + 43 };
+	 xc = P2.x, yc = P2.y;
+	 int x82coordinates[8] = { xc + 61, xc + 43,xc , xc - 43,xc - 63,xc - 43,xc,xc + 43 };
+	 int y82coordinates[8] = { yc     , yc - 43,yc - 61 ,yc - 43,yc,yc + 43,yc + 63,yc + 43 };
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
 	gfxInfo.FillClr = GREEN;//any color for filling
