@@ -303,8 +303,8 @@ int main()
 	} while (invalid);
 
 	int x2c = P2.x, y2c = P2.y;
-	int x82coordinates[8] = { x2c + 61,x2c + 43,x2c , x2c - 43,x2c - 63,x2c - 43,x2c,x2c + 43 };
-	int y82coordinates[8] = { y2c ,y2c - 43,y2c - 61 ,y2c - 43,y2c,y2c + 43,y2c + 63,y2c + 43 };
+	  int x82coordinates[8] = { x2c + 61, x2c + 43,x2c , x2c - 43,x2c - 63,x2c - 43,x2c,x2c + 43 };
+	  int y82coordinates[8] = { y2c , y2c - 43,y2c - 61 ,y2c - 43,y2c,y2c + 43,y2c + 63,y2c + 43 };
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
 	gfxInfo.FillClr = GREEN;//any color for filling
