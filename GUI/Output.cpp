@@ -7,7 +7,7 @@ Output::Output()
 	UI.InterfaceMode = MODE_DRAW;
 
 	UI.width = 1440;
-	UI.height = 650;
+	UI.height = 900;
 	UI.wx = 5;
 	UI.wy = 5;
 
