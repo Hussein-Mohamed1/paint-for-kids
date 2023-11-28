@@ -1,7 +1,7 @@
 #include "GUI\Input.h"
 #include "GUI\Output.h"
 #include <string>
-
+#include "CMUgraphicsLib/auxil.h"
 //This is a test code to test the Input and Output classes
 
 int main()
@@ -406,7 +406,8 @@ int main()
 	s = "you entered : ";
 	s += pIn->GetSrting(pOut);
 	pOut->PrintMessage(s);
-
+	Pause(1000);
+	
 
 
 	///TODO: Add code here to 
@@ -415,8 +416,6 @@ int main()
 	// 2- After reading the string clear the status bar
 
 	// 3- print on the status bar "You Entered" then print the string
-
-	pIn->GetSrting(pOut);
 
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
@@ -460,33 +459,33 @@ int main()
 			pOut->PrintMessage("Action: Draw a triangle , Click anywhere");
 			break;
 		case FUNC_LOAD:
-			pOut->PrintMessage("Action: Draw a load drawing , Click anywhere");
+			pOut->PrintMessage("Action: Load drawing , Click anywhere");
 			break;
 		case FUNC_PLAY_REC:
-			pOut->PrintMessage("Action: Draw a play recording , Click anywhere");
+			pOut->PrintMessage("Action: Play recording , Click anywhere");
 			break;
 		case FUNC_SAVE:
-			pOut->PrintMessage("Action: Draw a save recording , Click anywhere");
+			pOut->PrintMessage("Action: Save drawings , Click anywhere");
 			break;
 		case FUNC_REDO:
-			pOut->PrintMessage("Action: redo , Click anywhere");
+			pOut->PrintMessage("Action: Redo , Click anywhere");
 			break;
 
 		case FUNC_UNDO:
-			pOut->PrintMessage("Action: undo , Click anywhere");
+			pOut->PrintMessage("Action: Undo , Click anywhere");
 			break;
 
 		case FUNC_SELECT:
 			pOut->PrintMessage("Action: select a drawing , Click anywhere");
 			break;
 		case FUNC_START_REC:
-			pOut->PrintMessage("Action:start recording, Click anywhere");
+			pOut->PrintMessage("Action:Start recording, Click anywhere");
 			break;
 		case FUNC_STOP_REC:
-			pOut->PrintMessage("Action:stop recording , Click anywhere");
+			pOut->PrintMessage("Action:Stop recording , Click anywhere");
 			break;
 		case FUNC_ADD_IMAGE:
-			pOut->PrintMessage("Action:add image , Click anywhere");
+			pOut->PrintMessage("Action:Add image , Click anywhere");
 			break;
 		case COLOR_ORANGE:
 			pOut->PrintMessage("Action:orange color, Click anywhere");
@@ -521,10 +520,15 @@ int main()
 		case CLEAR_CANVAS:
 			pOut->PrintMessage("Action: a click on clear canvas, Click anywhere");
 			break;
-		case ITM_DELETE:
+		case FUNC_FILL:
+			pOut->PrintMessage("Action: a click on Fill color.");
+			break;
+		case FUNC_MOVE:
+			pOut->PrintMessage("Action: a click on Move shape.");
+			break;
+		case FUNC_DELETE:
 			pOut->PrintMessage("Action: a click on delete, Click on an item");
 			break;
-
 
 		case ENTER_PLAY_MODE:
 			pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
@@ -549,8 +553,6 @@ int main()
 		case  BY_COLOR_SHAPE:
 			pOut->PrintMessage("Action:Figure by Shape & Color , Click anywhere");
 			break;
-
-			///TODO: Add more cases for the other action types
 
 
 		case FUNC_EXIT:

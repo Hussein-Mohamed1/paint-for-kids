@@ -28,7 +28,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	FUNC_SAVE,
 	FUNC_LOAD,
 	ENTER_PLAY_MODE,
-	
+	FUNC_FILL,
+	FUNC_MOVE,
 	FUNC_CLEAR_CANVAS,
 	FUNC_EXIT,
 	FUNC_EXIT_playMode,

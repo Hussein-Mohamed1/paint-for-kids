@@ -7,13 +7,13 @@ Output::Output()
 	UI.InterfaceMode = MODE_DRAW;
 
 	UI.width = 1440;
-	UI.height = 900;
+	UI.height = 720;
 	UI.wx = 5;
 	UI.wy = 5;
 
 
-	UI.StatusBarHeight = 70;
-	UI.ToolBarHeight = 60;
+	UI.StatusBarHeight = 50;
+	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 50;
 
 	UI.DrawColor = BLUE;	//Drawing color
@@ -72,7 +72,7 @@ void Output::ClearStatusBar() const
 void Output::CreateDrawToolBar() const
 {
 
-	
+
 	UI.InterfaceMode = MODE_DRAW;
 
 	//You can draw the tool bar icons in any way you want.
@@ -108,6 +108,8 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[PLAY_MODE] = "images\\MenuItems\\playmode.jpg";
 	MenuItemImages[ADD_IMAGE] = "images\\MenuItems\\importImage.jpg";
 	MenuItemImages[CLEAR_CANVAS] = "images\\MenuItems\\clearCanvas.jpg";
+	MenuItemImages[ITM_FILL] = "images\\MenuItems\\fill.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\move.jpg";
 
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -158,7 +160,7 @@ void Output::ClearDrawArea() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, UI.ToolBarHeight+5, UI.width, UI.height - UI.StatusBarHeight+5);
+	pWind->DrawRectangle(0, UI.ToolBarHeight + 5, UI.width, UI.height - UI.StatusBarHeight + 5);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -238,7 +240,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 	pWind->DrawCircle(P1.x, P1.y, sqrt((P1.x - P2.x) * (P1.x - P2.x) + (P1.y - P2.y) * (P1.y - P2.y)), style);
 }
-void Output::Drawrtriangle( int x1 , int y1, int x2, int y2, int x3, int y3, GfxInfo RectGfxInfo, bool selected) const
+void Output::Drawrtriangle(int x1, int y1, int x2, int y2, int x3, int y3, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
@@ -257,7 +259,7 @@ void Output::Drawrtriangle( int x1 , int y1, int x2, int y2, int x3, int y3, Gfx
 		style = FRAME;
 
 
-	pWind->DrawTriangle(x1,y1,x2,y2,x3,y3, style);
+	pWind->DrawTriangle(x1, y1, x2, y2, x3, y3, style);
 
 
 
@@ -281,12 +283,7 @@ void Output::Drawhexagon(const int* xcoordinates, const int* ycoordinates, GfxIn
 		style = FRAME;
 
 
-	pWind-> DrawPolygon(xcoordinates, ycoordinates, 8, style);
-
-}
-void Output::printstring(string x)
-{
-
+	pWind->DrawPolygon(xcoordinates, ycoordinates, 8, style);
 
 }
 
